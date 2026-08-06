@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Roboto Slab", ui-serif, Georgia, serif;
+  --font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #f5f6f7;
+  --color-brand-100: #e8eaec;
+  --color-brand-200: #d1d5d9;
+  --color-brand-300: #adb4bb;
+  --color-brand-400: #828d96;
+  --color-brand-500: #66717b;
+  --color-brand-600: #545d66;
+  --color-brand-700: #474e55;
+  --color-brand-800: #3e434a;
+  --color-brand-900: #373b40;
+  --color-brand-950: #17191c;
+
+  --color-accent-50: #fdf6f0;
+  --color-accent-100: #fae9da;
+  --color-accent-200: #f4d0b4;
+  --color-accent-300: #ecaf84;
+  --color-accent-400: #e28753;
+  --color-accent-500: #d96a33;
+  --color-accent-600: #c15127;
+  --color-accent-700: #a03e22;
+  --color-accent-800: #813423;
+  --color-accent-900: #692d20;
+  --color-accent-950: #38150e;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    @apply bg-white text-brand-950 antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .photo-frame {
+    @apply relative overflow-hidden rounded-2xl bg-brand-100 ring-1 ring-brand-900/10;
+  }
+  .photo-frame img {
+    @apply h-full w-full object-cover;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-accent-900/25 transition hover:bg-accent-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-accent-200;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-brand-200 bg-white px-7 py-3.5 text-base font-bold text-brand-800 transition hover:border-brand-400 hover:bg-brand-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-100;
+  }
+  .section-eyebrow {
+    @apply mb-3 inline-block text-xs font-bold uppercase tracking-[0.2em] text-accent-700;
+  }
+  .card {
+    @apply rounded-xl border border-brand-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full bg-brand-50 px-3.5 py-1.5 text-sm font-semibold text-brand-800 ring-1 ring-brand-100;
+  }
+
+  /* ---- Bespoke 1: the lugged joint ---- */
+  .frame {
+    @apply relative mx-auto block w-full;
+    max-width: 400px; height: 220px;
+  }
+  .fr-bar {
+    @apply absolute block rounded-full bg-white/40;
+    height: 7px; transform-origin: 0;
+  }
+  .fr-top { width: 34%; top: 33%; left: 26%; }
+  .fr-down { width: 40%; top: 36%; left: 26%; transform: rotate(41deg); }
+  .fr-seat { width: 30%; top: 33%; left: 26%; transform: rotate(74deg); }
+  .fr-chain { width: 30%; top: 74%; left: 22%; transform: rotate(-2deg); }
+  .fr-head { width: 16%; top: 30%; left: 58%; transform: rotate(72deg); }
+  .fr-stay {
+    @apply absolute block rounded-full bg-accent-500;
+    width: 25%; height: 9px; top: 33%; left: 26%;
+    transform: rotate(115deg); transform-origin: 0;
+    box-shadow: 0 0 16px #d96a33a6;
+  }
+  .wheel-r { left: 4%; }
+  .wheel-f { right: 4%; }
+  .fr-wheel { @apply absolute block rounded-full border-[5px] border-white/30; width: 96px; height: 96px; bottom: 6%; }
+  .wheel-r { left: 4%; }
+  .wheel-f { right: 4%; }
+  .fr-tag {
+    @apply absolute block whitespace-nowrap rounded-full bg-accent-500 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow;
+    left: 44%; top: 8%;
+  }
+
+  .faq-item { @apply border-b border-brand-100; }
+
+  .js-reveal {
+    @apply translate-y-4 opacity-0;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .js-reveal.in { @apply translate-y-0 opacity-100; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js-reveal { @apply translate-y-0 opacity-100; transition: none; }
+}
